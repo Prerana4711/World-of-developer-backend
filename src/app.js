@@ -12,7 +12,7 @@ const requestRouter = require("./routes/request")
 const userRouter = require("./routes/user")
 const cors = require("cors")
 app.use(cors({
-  origin: "https://your-vercel-app.vercel.app",
+  origin: "https://world-of-developer-frontend-part.vercel.app/",
   credentials: true
 }))
 app.use("/",authRouter)
