@@ -11,7 +11,10 @@ const profielRouter = require("./routes/profile")
 const requestRouter = require("./routes/request")
 const userRouter = require("./routes/user")
 const cors = require("cors")
-app.use(cors())
+app.use(cors({
+  origin: "https://your-vercel-app.vercel.app",
+  credentials: true
+}))
 app.use("/",authRouter)
 app.use("/",profielRouter)
 app.use("/",requestRouter)
