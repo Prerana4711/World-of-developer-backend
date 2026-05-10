@@ -1,5 +1,5 @@
 const express = require("express");
-
+require("dotenv").config();
 const app = express();
 const { connectDB } = require("../src/config/database");
 const User = require('../src/models/user')
@@ -11,11 +11,7 @@ const profielRouter = require("./routes/profile")
 const requestRouter = require("./routes/request")
 const userRouter = require("./routes/user")
 const cors = require("cors")
-require("dotenv").config();
-app.use(cors({
-  origin:"http://localhost:5173",
-  credentials:true
-}))
+app.use(cors())
 app.use("/",authRouter)
 app.use("/",profielRouter)
 app.use("/",requestRouter)
