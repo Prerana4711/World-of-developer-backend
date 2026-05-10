@@ -57,7 +57,7 @@ if(!validator.isStrongPassword(value)){
 )
 userSchema.methods.getJWT = async function (){
     const user = this
-     const token =await jwt.sign({_id:user._id}, "Prerana@471111" ) 
+     const token =await jwt.sign({_id:user._id}, process.env.SECRET_KEY) 
      return token;
 }
 userSchema.methods.isPasswordValid = async function (passwordInputUser){

@@ -5,7 +5,7 @@
   if(!token){
     throw new Error("Invalid token")
   }
-  decodeToken = await jwt.verify(token,"Prerana@471111",
+  decodeToken = await jwt.verify(token,process.env.SECRET_KEY,
    {expiresIn:"0d"}
 )
   const user = await User.findOne({_id:decodeToken._id})
