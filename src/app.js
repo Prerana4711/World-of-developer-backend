@@ -1,0 +1,33 @@
+const express = require("express");
+
+const app = express();
+const { connectDB } = require("../src/config/database");
+const User = require('../src/models/user')
+app.use(express.json())
+const cookieParser = require("cookie-parser")
+app.use(cookieParser());
+const authRouter = require("./routes/auth")
+const profielRouter = require("./routes/profile")
+const requestRouter = require("./routes/request")
+const userRouter = require("./routes/user")
+const cors = require("cors")
+require("dotenv").config();
+app.use(cors({
+  origin:"http://localhost:5173",
+  credentials:true
+}))
+app.use("/",authRouter)
+app.use("/",profielRouter)
+app.use("/",requestRouter)
+app.use("/",userRouter)
+connectDB()
+  .then(() => {
+    //because first we should connect to db then start server and listen request
+    console.log("connected successfully");
+    app.listen(3000, () => {
+      console.log("server started");
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
