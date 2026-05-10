@@ -20,11 +20,12 @@ app.use("/",authRouter)
 app.use("/",profielRouter)
 app.use("/",requestRouter)
 app.use("/",userRouter)
+const PORT = process.env.PORT || 3000;
 connectDB()
   .then(() => {
     //because first we should connect to db then start server and listen request
     console.log("connected successfully");
-    app.listen(3000, () => {
+    app.listen(PORT, () => {
       console.log("server started");
     });
   })
